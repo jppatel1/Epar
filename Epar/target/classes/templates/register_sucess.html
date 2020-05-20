@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Sucess</title>
+</head>
+<body>
+    <div align="Center">
+        <h1>Registration Sucess</h1>
+        <span>First name:</span>
+        <span th:text= "${user.firstName}"></span>
+        </br>
+        <span>Last name:</span>
+        <span th:text= "${user.lastName}"></span>
+        </br>
+        <span>Email:</span>
+        <span th:text= "${user.email}"></span>
+        </br>
+    </div>
+</body>
+</html>

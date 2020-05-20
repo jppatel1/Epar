@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Registration</title>
+</head>
+<body>
+    <div align="center">
+        <h1>User Registration Form</h1>
+        <!--/*@thymesVar id="user" type="gov.srpmicnsn.Epar.dto.User"*/-->
+        <form action="#" th:action="@{/register}" th:object="${user}" method="post">
+            <label>First Name:</label>
+            <input type="text" th:field="*{firstName}"></br></br>
+            <label>Last Name:</label>
+            <input type="text" th:field="*{lastName}"></br></br>
+            <label>Email:</label>
+            <input type="email" th:field="*{email}"></br></br>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</body>
+</html>
