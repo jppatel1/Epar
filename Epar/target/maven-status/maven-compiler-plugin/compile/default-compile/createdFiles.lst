@@ -1,0 +1,5 @@
+gov\srpmicnsn\Epar\web\controllers\RegistrationController.class
+gov\srpmicnsn\Epar\EparApplication.class
+gov\srpmicnsn\Epar\exception\RegistrationUnsucessful.class
+gov\srpmicnsn\Epar\dto\User.class
+gov\srpmicnsn\Epar\services\FormatName.class
