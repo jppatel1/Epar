@@ -4,6 +4,12 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
     <style>
+        .error {
+            color: red;
+            margin-top: -15px;
+            padding: 0;
+            font-size: 0.9em;
+        }
         body {
             display: flex;
             min-height: 100vh;
@@ -36,35 +42,40 @@
 </head>
 
 <body>
-<div class="section"></div>
+<div class="naxbar-fixed nav-content center">
+    <nav class="grey darken-3">
+        <div class="nav-wrapper">
+            <a href="#!" text-alighn="center">SRPMIC - Employee Performance Appraisal Report</a>
+        </div>
+    </nav>
+</div>
+<div class="container"></div>
 <main>
     <center>
-        <div class="section"></div>
+        <div class="container"></div>
 
-        <h5 class="indigo-text">Login</h5>
+        <h5 class="black-text">Login</h5>
         <div class="section"></div>
 
         <div class="container">
             <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
 
-                <form class="col s12" method="post">
+                <form class="col s12" th:action="@{/login}" method="post">
                     <div class='row'>
                         <div class='col s12'>
                         </div>
                     </div>
-
-                    <div class='row'>
-                        <div class='input-field col s12'>
-                            <input class='validate' type='text' name='empId' id='empId' />
-                            <label for='empId'>Emplid :</label>
-                        </div>
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">account_circle</i>
+                        <!--/*@thymesVar id="id" type="gov.srpmicnsn.Epar.services.LoginAuthentication"*/-->
+                        <input id="icon_prefix" type="text" th:field="*{id}"  class="validate">
+                        <label for="icon_prefix">Employee ID</label>
                     </div>
-
                         <div class='row'>
-                            <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo'>Login</button>
+                            <button type='submit' name='btn_login' class='col s12 btn waves-effect grey darken-3'>Login</button>
                         </div>
                     <div class='row'>
-                        <button type='button' name='btn_login_with' class='col s12 btn btn-large waves-effect indigo'>Login with patelj1</button>
+                        <button type='button' name='btn_login_with' class='col s12 btn waves-effect grey darken-3'>Login with patelj1</button>
                     </div>
                 </form>
             </div>

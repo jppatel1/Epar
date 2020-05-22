@@ -1,7 +1,6 @@
 package gov.srpmicnsn.Epar.web.controllers;
 
 import gov.srpmicnsn.Epar.dto.User;
-import gov.srpmicnsn.Epar.services.FormatName;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,19 +22,13 @@ public class RegistrationController {
         if (result.hasErrors()){
             return "register_form";
         }
-        model.addAttribute("user",FormatName.formatName(user));
-        return "register_sucess";
-    }
 
+        return "register_success";
+    }
     @RequestMapping("/")
     public void handleRequest() {
         throw new RuntimeException("test exception");
     }
 
-
-    @GetMapping("login")
-    public String login(){
-        return "login";
-    }
 
 }

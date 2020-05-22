@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        nav.nav-center ul {
+            text-align: center;
+        }
+        nav.nav-center ul li {
+            display: inline;
+            float: none;
+        }
+        nav.nav-center ul li a {
+            display: inline-block;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="../static/css/materialize.min.css" media="screen,projection"/>
+</head>
+<body>
+<!--/*  Multiple fragments may be defined in one file */-->
+<div class="naxbar-fixed nav-content center" th:fragment="navbar">
+    <nav class="naxbar-fixed nav-content center grey darken-3"  th:fragment="navbar" role="navigation">
+                <a class="text-align:center;">SRPMIC - Employee Performance Appraisal Report</a>
+    </nav>
+</div>
+</body>
+</html>
