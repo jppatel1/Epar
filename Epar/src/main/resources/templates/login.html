@@ -67,9 +67,11 @@
                     </div>
                     <div class="input-field col s12">
                         <i class="material-icons prefix">account_circle</i>
-                        <!--/*@thymesVar id="id" type="gov.srpmicnsn.Epar.services.LoginAuthentication"*/-->
-                        <input id="icon_prefix" type="text" th:field="*{id}"  class="validate">
+
+                        <input id="icon_prefix" type="text" th:name="id" class="validate">
                         <label for="icon_prefix">Employee ID</label>
+
+
                     </div>
                         <div class='row'>
                             <button type='submit' name='btn_login' class='col s12 btn waves-effect grey darken-3'>Login</button>

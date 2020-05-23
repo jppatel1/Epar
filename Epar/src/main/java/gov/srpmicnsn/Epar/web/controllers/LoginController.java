@@ -14,16 +14,22 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class LoginController {
 
 
-    @GetMapping("/login")
+   /* @GetMapping("/login")
     public String login(Model model){
         int a=0;
         model.addAttribute("id",a);
         return "login";
-    }
+    }*/
 
-    @PostMapping("/login")
-    public String login(@RequestParam Integer id) {
-        System.out.println(id);
+    @RequestMapping("/login")
+    public String login(@RequestParam(value = "id",required = false) Integer id,Model model) {
+
+    if(id != null) {
+        model.addAttribute("id",id);
+        log.info("id {}", id);
+        return "success";
+    }
+        model.addAttribute("id",0);
         return "login";
     }
 
