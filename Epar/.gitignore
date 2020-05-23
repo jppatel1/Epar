@@ -2,7 +2,9 @@
 
 *.iml
 
-.idea
+/.idea/*.*
+
+.DS_Store
 
 mvnw
 mvnw.cmd
