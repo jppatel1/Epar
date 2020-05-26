@@ -24,11 +24,11 @@ public class LoginController {
     @RequestMapping("/login")
     public String login(@RequestParam(value = "id",required = false) Integer id,Model model) {
 
-    if(id != null) {
-        model.addAttribute("id",id);
-        log.info("id {}", id);
-        return "success";
-    }
+        if(id != null) {
+            model.addAttribute("id",id);
+            log.info("id {}", id);
+            return "success";
+        }
         model.addAttribute("id",0);
         return "login";
     }

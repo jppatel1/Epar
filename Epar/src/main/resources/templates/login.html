@@ -42,13 +42,7 @@
 </head>
 
 <body>
-<div class="naxbar-fixed nav-content center">
-    <nav class="grey darken-3">
-        <div class="nav-wrapper">
-            <a href="#!" text-alighn="center">SRPMIC - Employee Performance Appraisal Report</a>
-        </div>
-    </nav>
-</div>
+<div th:replace="../fragments/navbar :: navbar">...</div>
 <div class="container"></div>
 <main>
     <center>
@@ -73,9 +67,9 @@
 
 
                     </div>
-                        <div class='row'>
-                            <button type='submit' name='btn_login' class='col s12 btn waves-effect grey darken-3'>Login</button>
-                        </div>
+                    <div class='row'>
+                        <button type='submit' name='btn_login' class='col s12 btn waves-effect grey darken-3'>Login</button>
+                    </div>
                     <div class='row'>
                         <button type='button' name='btn_login_with' class='col s12 btn waves-effect grey darken-3'>Login with patelj1</button>
                     </div>
@@ -86,6 +80,9 @@
 
     <div class="section"></div>
     <div class="section"></div>
+    <footer class="page-footer grey darken-3 " style="position:fixed;bottom:0;left:0;width:100%;">
+        <div th:replace="../fragments/footer :: footer">...</div>
+    </footer>
 </main>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>

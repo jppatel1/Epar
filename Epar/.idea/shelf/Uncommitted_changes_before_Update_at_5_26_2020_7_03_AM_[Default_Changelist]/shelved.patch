@@ -1,0 +1,217 @@
+Index: src/main/resources/templates/login.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"en\" xmlns:th=\"http://www.thymeleaf.org\">\r\n<head>\r\n    <link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">\r\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css\">\r\n    <style>\r\n        .error {\r\n            color: red;\r\n            margin-top: -15px;\r\n            padding: 0;\r\n            font-size: 0.9em;\r\n        }\r\n        body {\r\n            display: flex;\r\n            min-height: 100vh;\r\n            flex-direction: column;\r\n        }\r\n\r\n        main {\r\n            flex: 1 0 auto;\r\n        }\r\n\r\n        body {\r\n            background: #fff;\r\n        }\r\n\r\n        .input-field input[type=date]:focus + label,\r\n        .input-field input[type=text]:focus + label,\r\n        .input-field input[type=email]:focus + label,\r\n        .input-field input[type=password]:focus + label {\r\n            color: #e91e63;\r\n        }\r\n\r\n        .input-field input[type=date]:focus,\r\n        .input-field input[type=text]:focus,\r\n        .input-field input[type=email]:focus,\r\n        .input-field input[type=password]:focus {\r\n            border-bottom: 2px solid #e91e63;\r\n            box-shadow: none;\r\n        }\r\n    </style>\r\n</head>\r\n\r\n<body>\r\n<div class=\"naxbar-fixed nav-content center\">\r\n    <nav class=\"grey darken-3\">\r\n        <div class=\"nav-wrapper\">\r\n            <a href=\"#!\" text-alighn=\"center\">SRPMIC - Employee Performance Appraisal Report</a>\r\n        </div>\r\n    </nav>\r\n</div>\r\n<div class=\"container\"></div>\r\n<main>\r\n    <center>\r\n        <div class=\"container\"></div>\r\n\r\n        <h5 class=\"black-text\">Login</h5>\r\n        <div class=\"section\"></div>\r\n\r\n        <div class=\"container\">\r\n            <div class=\"z-depth-1 grey lighten-4 row\" style=\"display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;\">\r\n\r\n                <form class=\"col s12\" th:action=\"@{/login}\" method=\"post\">\r\n                    <div class='row'>\r\n                        <div class='col s12'>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"input-field col s12\">\r\n                        <i class=\"material-icons prefix\">account_circle</i>\r\n                        <!--/*@thymesVar id=\"id\" type=\"gov.srpmicnsn.Epar.services.LoginAuthentication\"*/-->\r\n                        <input id=\"icon_prefix\" type=\"text\" th:field=\"*{id}\"  class=\"validate\">\r\n                        <label for=\"icon_prefix\">Employee ID</label>\r\n                    </div>\r\n                        <div class='row'>\r\n                            <button type='submit' name='btn_login' class='col s12 btn waves-effect grey darken-3'>Login</button>\r\n                        </div>\r\n                    <div class='row'>\r\n                        <button type='button' name='btn_login_with' class='col s12 btn waves-effect grey darken-3'>Login with patelj1</button>\r\n                    </div>\r\n                </form>\r\n            </div>\r\n        </div>\r\n    </center>\r\n\r\n    <div class=\"section\"></div>\r\n    <div class=\"section\"></div>\r\n</main>\r\n\r\n<script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js\"></script>\r\n<script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js\"></script>\r\n</body>\r\n\r\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/resources/templates/login.html	(revision 18a5b536d1f6d273d59dc962edb77d9583e80ae4)
++++ src/main/resources/templates/login.html	(date 1590189538439)
+@@ -59,16 +59,15 @@
+ 
+         <div class="container">
+             <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+-
+-                <form class="col s12" th:action="@{/login}" method="post">
++                <!--/*@thymesVar id="employeeId" type="gov.srpmicnsn.Epar.dto.EmployeeId"*/-->
++                <form class="col s12" th:action="@{/login}" th:object="${EmployeeId}" method="post">
+                     <div class='row'>
+                         <div class='col s12'>
+                         </div>
+                     </div>
+                     <div class="input-field col s12">
+                         <i class="material-icons prefix">account_circle</i>
+-                        <!--/*@thymesVar id="id" type="gov.srpmicnsn.Epar.services.LoginAuthentication"*/-->
+-                        <input id="icon_prefix" type="text" th:field="*{id}"  class="validate">
++                        <input id="icon_prefix" type="text" th:field="*{empId}" class="validate">
+                         <label for="icon_prefix">Employee ID</label>
+                     </div>
+                         <div class='row'>
+@@ -77,6 +76,7 @@
+                     <div class='row'>
+                         <button type='button' name='btn_login_with' class='col s12 btn waves-effect grey darken-3'>Login with patelj1</button>
+                     </div>
++
+                 </form>
+             </div>
+         </div>
+Index: src/main/java/gov/srpmicnsn/Epar/dto/User.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package gov.srpmicnsn.Epar.dto;\r\n\r\nimport lombok.Getter;\r\nimport lombok.Setter;\r\n\r\nimport javax.validation.constraints.NotBlank;\r\nimport javax.validation.constraints.NotNull;\r\nimport javax.validation.constraints.Size;\r\n\r\n@Getter\r\n@Setter\r\n@NotNull\r\npublic class User {\r\n\r\n    @NotBlank\r\n    @Size(min = 2,max = 18, message = \"First name should be between 2 and 18 character long\")\r\n    String firstName;\r\n\r\n    @NotBlank\r\n    @Size(min = 2,max = 18, message = \"First name should be between 2 and 18 character long\")\r\n    String lastName;\r\n\r\n    @NotBlank\r\n    @Size(min = 2,max = 18, message = \"First name should be between 2 and 18 character long\")\r\n    String email;\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/gov/srpmicnsn/Epar/dto/User.java	(revision 18a5b536d1f6d273d59dc962edb77d9583e80ae4)
++++ src/main/java/gov/srpmicnsn/Epar/dto/User.java	(date 1590175197226)
+@@ -21,6 +21,5 @@
+     String lastName;
+ 
+     @NotBlank
+-    @Size(min = 2,max = 18, message = "First name should be between 2 and 18 character long")
+     String email;
+ }
+Index: src/main/java/gov/srpmicnsn/Epar/web/controllers/RegistrationController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package gov.srpmicnsn.Epar.web.controllers;\r\n\r\nimport gov.srpmicnsn.Epar.dto.User;\r\nimport org.springframework.stereotype.Controller;\r\nimport org.springframework.ui.Model;\r\nimport org.springframework.validation.BindingResult;\r\nimport org.springframework.web.bind.annotation.*;\r\nimport javax.validation.Valid;\r\n\r\n@Controller\r\npublic class RegistrationController {\r\n\r\n    @GetMapping(value = \"/register\")\r\n    public String showForm( Model model){\r\n        model.addAttribute(\"user\",new User());\r\n        return \"register_form\";\r\n    }\r\n\r\n\r\n    @PostMapping(\"/register\")\r\n    public String submitForm(@ModelAttribute(\"user\") @Valid User user, BindingResult result,Model model){\r\n        if (result.hasErrors()){\r\n            return \"register_form\";\r\n        }\r\n\r\n        return \"register_success\";\r\n    }\r\n    @RequestMapping(\"/\")\r\n    public void handleRequest() {\r\n        throw new RuntimeException(\"test exception\");\r\n    }\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/gov/srpmicnsn/Epar/web/controllers/RegistrationController.java	(revision 18a5b536d1f6d273d59dc962edb77d9583e80ae4)
++++ src/main/java/gov/srpmicnsn/Epar/web/controllers/RegistrationController.java	(date 1590189373997)
+@@ -22,7 +22,6 @@
+         if (result.hasErrors()){
+             return "register_form";
+         }
+-
+         return "register_success";
+     }
+     @RequestMapping("/")
+Index: src/main/java/gov/srpmicnsn/Epar/web/controllers/LoginController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package gov.srpmicnsn.Epar.web.controllers;\r\n\r\n\r\nimport gov.srpmicnsn.Epar.services.LoginAuthentication;\r\nimport lombok.extern.slf4j.Slf4j;\r\nimport org.springframework.stereotype.Controller;\r\nimport org.springframework.ui.Model;\r\nimport org.springframework.web.bind.annotation.*;\r\nimport org.springframework.web.servlet.mvc.support.RedirectAttributes;\r\n\r\n\r\n@Controller\r\n@Slf4j\r\npublic class LoginController {\r\n\r\n\r\n    @GetMapping(\"/login\")\r\n    public String login(Model model){\r\n        int a=0;\r\n        model.addAttribute(\"id\",a);\r\n        return \"login\";\r\n    }\r\n\r\n    @PostMapping(\"/login\")\r\n    public String login(@RequestParam Integer id) {\r\n        System.out.println(id);\r\n        return \"login\";\r\n    }\r\n\r\n    /*@PostMapping(value = \"/login\")\r\n    public String login(){\r\n        log.debug(\"problem\");\r\n        return \"success\";\r\n    }*/\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/gov/srpmicnsn/Epar/web/controllers/LoginController.java	(revision 18a5b536d1f6d273d59dc962edb77d9583e80ae4)
++++ src/main/java/gov/srpmicnsn/Epar/web/controllers/LoginController.java	(date 1590189373975)
+@@ -1,35 +1,44 @@
+ package gov.srpmicnsn.Epar.web.controllers;
+ 
+ 
++import gov.srpmicnsn.Epar.dto.EmployeeId;
++import gov.srpmicnsn.Epar.dto.User;
+ import gov.srpmicnsn.Epar.services.LoginAuthentication;
+ import lombok.extern.slf4j.Slf4j;
+ import org.springframework.stereotype.Controller;
+ import org.springframework.ui.Model;
++import org.springframework.validation.BindingResult;
+ import org.springframework.web.bind.annotation.*;
+ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+ 
++import javax.persistence.criteria.CriteriaBuilder;
++import javax.validation.Valid;
++
+ 
+ @Controller
+ @Slf4j
+ public class LoginController {
+ 
+ 
+-    @GetMapping("/login")
+-    public String login(Model model){
+-        int a=0;
+-        model.addAttribute("id",a);
++    @GetMapping(value = "/login")
++    public String showForm( Model model){
++        model.addAttribute("user",new EmployeeId());
+         return "login";
+     }
+ 
+-    @PostMapping("/login")
++    /*@PostMapping("/login")
+     public String login(@RequestParam Integer id) {
+         System.out.println(id);
+         return "login";
+-    }
++    }*/
++
++    @PostMapping("/login")
++    public String submitForm(@ModelAttribute("employeeId") @Valid EmployeeId employeeId){
++        if(LoginAuthentication.checkUser(employeeId)){
++            log.info("Congo you passed correct id");
++            return "login";
++        }
+ 
+-    /*@PostMapping(value = "/login")
+-    public String login(){
+-        log.debug("problem");
+         return "success";
+-    }*/
++    }
+ }
+Index: src/main/java/gov/srpmicnsn/Epar/services/LoginAuthentication.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package gov.srpmicnsn.Epar.services;\r\n\r\npublic class LoginAuthentication {\r\n    public static boolean checkUser(Integer id){\r\n        if(id == 01010){\r\n            return true;\r\n        }\r\n        return false;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/gov/srpmicnsn/Epar/services/LoginAuthentication.java	(revision 18a5b536d1f6d273d59dc962edb77d9583e80ae4)
++++ src/main/java/gov/srpmicnsn/Epar/services/LoginAuthentication.java	(date 1590188389442)
+@@ -1,8 +1,10 @@
+ package gov.srpmicnsn.Epar.services;
+ 
++import gov.srpmicnsn.Epar.dto.EmployeeId;
++
+ public class LoginAuthentication {
+-    public static boolean checkUser(Integer id){
+-        if(id == 01010){
++    public static boolean checkUser(EmployeeId id){
++        if(id.getEmpId().equals( "01010")){
+             return true;
+         }
+         return false;
+Index: target/classes/templates/login.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"en\" xmlns:th=\"http://www.thymeleaf.org\">\r\n<head>\r\n    <link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">\r\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css\">\r\n    <style>\r\n        .error {\r\n            color: red;\r\n            margin-top: -15px;\r\n            padding: 0;\r\n            font-size: 0.9em;\r\n        }\r\n        body {\r\n            display: flex;\r\n            min-height: 100vh;\r\n            flex-direction: column;\r\n        }\r\n\r\n        main {\r\n            flex: 1 0 auto;\r\n        }\r\n\r\n        body {\r\n            background: #fff;\r\n        }\r\n\r\n        .input-field input[type=date]:focus + label,\r\n        .input-field input[type=text]:focus + label,\r\n        .input-field input[type=email]:focus + label,\r\n        .input-field input[type=password]:focus + label {\r\n            color: #e91e63;\r\n        }\r\n\r\n        .input-field input[type=date]:focus,\r\n        .input-field input[type=text]:focus,\r\n        .input-field input[type=email]:focus,\r\n        .input-field input[type=password]:focus {\r\n            border-bottom: 2px solid #e91e63;\r\n            box-shadow: none;\r\n        }\r\n    </style>\r\n</head>\r\n\r\n<body>\r\n<div class=\"naxbar-fixed nav-content center\">\r\n    <nav class=\"grey darken-3\">\r\n        <div class=\"nav-wrapper\">\r\n            <a href=\"#!\" text-alighn=\"center\">SRPMIC - Employee Performance Appraisal Report</a>\r\n        </div>\r\n    </nav>\r\n</div>\r\n<div class=\"container\"></div>\r\n<main>\r\n    <center>\r\n        <div class=\"container\"></div>\r\n\r\n        <h5 class=\"black-text\">Login</h5>\r\n        <div class=\"section\"></div>\r\n\r\n        <div class=\"container\">\r\n            <div class=\"z-depth-1 grey lighten-4 row\" style=\"display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;\">\r\n\r\n                <form class=\"col s12\" th:action=\"@{/login}\" method=\"post\">\r\n                    <div class='row'>\r\n                        <div class='col s12'>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"input-field col s12\">\r\n                        <i class=\"material-icons prefix\">account_circle</i>\r\n                        <!--/*@thymesVar id=\"id\" type=\"gov.srpmicnsn.Epar.services.LoginAuthentication\"*/-->\r\n                        <input id=\"icon_prefix\" type=\"text\" th:field=\"*{id}\"  class=\"validate\">\r\n                        <label for=\"icon_prefix\">Employee ID</label>\r\n                    </div>\r\n                        <div class='row'>\r\n                            <button type='submit' name='btn_login' class='col s12 btn waves-effect grey darken-3'>Login</button>\r\n                        </div>\r\n                    <div class='row'>\r\n                        <button type='button' name='btn_login_with' class='col s12 btn waves-effect grey darken-3'>Login with patelj1</button>\r\n                    </div>\r\n                </form>\r\n            </div>\r\n        </div>\r\n    </center>\r\n\r\n    <div class=\"section\"></div>\r\n    <div class=\"section\"></div>\r\n</main>\r\n\r\n<script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js\"></script>\r\n<script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js\"></script>\r\n</body>\r\n\r\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- target/classes/templates/login.html	(revision 18a5b536d1f6d273d59dc962edb77d9583e80ae4)
++++ target/classes/templates/login.html	(date 1590189538439)
+@@ -59,16 +59,15 @@
+ 
+         <div class="container">
+             <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+-
+-                <form class="col s12" th:action="@{/login}" method="post">
++                <!--/*@thymesVar id="employeeId" type="gov.srpmicnsn.Epar.dto.EmployeeId"*/-->
++                <form class="col s12" th:action="@{/login}" th:object="${EmployeeId}" method="post">
+                     <div class='row'>
+                         <div class='col s12'>
+                         </div>
+                     </div>
+                     <div class="input-field col s12">
+                         <i class="material-icons prefix">account_circle</i>
+-                        <!--/*@thymesVar id="id" type="gov.srpmicnsn.Epar.services.LoginAuthentication"*/-->
+-                        <input id="icon_prefix" type="text" th:field="*{id}"  class="validate">
++                        <input id="icon_prefix" type="text" th:field="*{empId}" class="validate">
+                         <label for="icon_prefix">Employee ID</label>
+                     </div>
+                         <div class='row'>
+@@ -77,6 +76,7 @@
+                     <div class='row'>
+                         <button type='button' name='btn_login_with' class='col s12 btn waves-effect grey darken-3'>Login with patelj1</button>
+                     </div>
++
+                 </form>
+             </div>
+         </div>
+Index: src/main/java/gov/srpmicnsn/Epar/dto/EmployeeId.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/gov/srpmicnsn/Epar/dto/EmployeeId.java	(date 1590188935302)
++++ src/main/java/gov/srpmicnsn/Epar/dto/EmployeeId.java	(date 1590188935302)
+@@ -0,0 +1,16 @@
++package gov.srpmicnsn.Epar.dto;
++
++import lombok.Getter;
++import lombok.NonNull;
++import lombok.Setter;
++
++import javax.validation.constraints.NotBlank;
++
++@Getter
++@Setter
++@NonNull
++public class EmployeeId {
++
++    @NotBlank
++    String empId;
++}

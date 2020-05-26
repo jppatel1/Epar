@@ -21,6 +21,5 @@ public class User {
     String lastName;
 
     @NotBlank
-    @Size(min = 2,max = 18, message = "First name should be between 2 and 18 character long")
     String email;
 }

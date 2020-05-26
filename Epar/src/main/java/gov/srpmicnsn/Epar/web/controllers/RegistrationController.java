@@ -22,7 +22,6 @@ public class RegistrationController {
         if (result.hasErrors()){
             return "register_form";
         }
-
         return "register_success";
     }
     @RequestMapping("/")
